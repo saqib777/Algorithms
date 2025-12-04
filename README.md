@@ -1,6 +1,6 @@
 # Algorithms
 
-# Data Structures & Algorithms – Curated Learning Repo
+# Data Structures & Algorithms - Curated Learning Repo
 
 This repo brings together the core algorithms that form the foundation of problem-solving in software development. Each section focuses on a category and contains individual implementations, explanations, and small test examples. The structure is simple, consistent, and easy to expand as you learn.
 
