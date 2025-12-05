@@ -1,61 +1,36 @@
+Selection sort follows a clear and predictable structure, and breaking it down helps you understand why it behaves the way it does.
+
+At a high level, the algorithm treats the array as two sections: the sorted part on the left and the unsorted part on the right. Initially, the sorted section is empty. With every pass, one element is placed in its correct position, gradually expanding the sorted portion.
+
+The process begins by assuming the first element of the unsorted section is the smallest. You then scan the remaining elements to check if any value is smaller. If a smaller value appears, you update the position of the minimum. After completing the scan, you swap the smallest value with the first element of the unsorted section. This locks that smallest value into its final position.
+
+The algorithm then shifts the boundary forward and repeats the same pattern: locate the smallest element from the remaining unsorted values, bring it to the front, and grow the sorted portion step by step.
+
+What makes selection sort easy to reason about is that it always performs the same number of comparisons, even if the list is nearly sorted. It doesn’t try to be adaptive or clever; it simply looks for the smallest element every single time. The trade-off is that it runs slowly on large inputs, but it performs very few swaps, which can be useful in situations where swapping is expensive.
+
+The core structure of the algorithm can be summarized as:
+
+1. Start with the entire list as unsorted.
+2. Find the smallest value in the unsorted portion.
+3. Swap it into the correct position at the beginning of the unsorted section.
+4. Mark that position as sorted.
+5. Repeat until no unsorted elements remain.
+
+This step-by-step expansion of the sorted section is what defines selection sort.
+
 ```
-# Bubble Sort Implementation
-
-Explanation:
- Bubble Sort works by repeatedly stepping through the list, comparing
- adjacent elements and swapping them if they are out of order. Over multiple
- passes, the largest elements gradually "bubble up" to the end of the list.
-
- How it works step-by-step:
- 1. Start from the beginning of the list.
- 2. Compare each pair of adjacent items.
- 3. If the first item is larger than the second, swap them.
- 4. Continue until the end of the list. After one full pass, the largest
- element is guaranteed to be at the last position.
- 5. Repeat the process for the remaining unsorted portion of the list.
-
- Complexity:
- - Worst Case: O(n^2)
- - Average Case: O(n^2)
- - Best Case: O(n) when the list is already sorted, because the algorithm
- detects no swaps and stops early.
-
- Notes:
- - Bubble Sort is simple to understand but inefficient for large datasets.
- - The early exit optimization (checking if a swap happened) improves its
- performance on nearly-sorted lists.
- - Good for learning how comparison-based sorting works, but rarely used
- in production due to higher time complexity compared to algorithms like
- Merge Sort or Quick Sort.
-
-
- This function takes a list of numbers and returns a sorted version of it
- using the Bubble Sort algorithm.
-```
-```
-# Bubble Sort Implementation
-
-# This function takes a list of numbers and returns a sorted version of it
-# using the Bubble Sort algorithm.
-
-def bubble_sort(arr):
+def selection_sort(arr):
     n = len(arr)
     for i in range(n):
-        # Track if any swap happens in this pass
-        swapped = False
-        for j in range(0, n - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                swapped = True
-        # If no swaps occurred, the list is already sorted
-        if not swapped:
-            break
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
     return arr
 
-# Example usage
 if __name__ == "__main__":
-    sample = [5, 2, 9, 1, 5, 6]
+    sample = [64, 25, 12, 22, 11]
     print("Original:", sample)
-    print("Sorted:", bubble_sort(sample))
+    print("Sorted:", selection_sort(sample))
 ```
-
