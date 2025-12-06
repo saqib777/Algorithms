@@ -13,3 +13,28 @@ In terms of performance, the worst-case time complexity of insertion sort is O(n
 Insertion sort is stable, meaning that it preserves the relative order of equal elements. It is also adaptive, which makes it faster than bubble sort and selection sort on partially sorted data. This is why insertion sort is often used as a helper algorithm inside more advanced sorting techniques like Tim Sort.
 
 From a learning perspective, insertion sort is extremely valuable because it teaches how local ordering works, how shifting is different from swapping, and how sorted regions grow step by step. It builds a strong foundation for understanding advanced sorting strategies later on.
+
+
+```
+def insertion_sort(arr):
+    n = len(arr)
+
+    for i in range(1, n):
+        current_value = arr[i]
+        position = i - 1
+
+        while position >= 0 and arr[position] > current_value:
+            arr[position + 1] = arr[position]
+            position -= 1
+
+        arr[position + 1] = current_value
+
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [8, 3, 5, 2, 9, 1]
+    print("Original:", sample)
+    print("Sorted:", insertion_sort(sample))
+
+```
