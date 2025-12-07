@@ -171,3 +171,6 @@ if __name__ == "__main__":
     print("Original:", sample)
     print("Sorted:", counting_sort(sample))
 ```
+<img width="1428" height="720" alt="image" src="https://github.com/user-attachments/assets/f2ccd155-05a3-43bf-9fd4-cb88b8bba7b7" />
+
+<img width="3750" height="2500" alt="image" src="https://github.com/user-attachments/assets/2b71a4fe-eb7d-4b27-94d2-013c970d8e64" />
