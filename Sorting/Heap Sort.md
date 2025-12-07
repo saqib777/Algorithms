@@ -34,6 +34,44 @@ From a complexity perspective, heap sort always runs in O(n log n) time, regardl
 
 Heap sort is not a stable sorting algorithm. The relative order of equal elements is not guaranteed to be preserved. This is a trade-off for its strong worst-case performance and in-place nature.
 
+```
+def heap_sort(arr):
+    n = len(arr)
+
+    # Build max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements one by one
+    for i in range(n - 1, 0, -1):
+        arr[0], arr[i] = arr[i], arr[0]
+        heapify(arr, i, 0)
+
+    return arr
+
+
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+
+if __name__ == "__main__":
+    sample = [12, 11, 13, 5, 6, 7]
+    print("Original:", sample)
+    print("Sorted:", heap_sort(sample))
+```
+
 Compared to merge sort, heap sort saves memory because it does not use extra arrays. Compared to quick sort, heap sort avoids the worst-case O(n²) behavior. However, in practice, heap sort is often slower than quick sort due to weaker cache performance and more complex operations.
 
 From a learning perspective, heap sort is extremely important because it teaches how tree-based data structures work inside arrays, how to enforce structural properties like the heap condition, and how logarithmic operations naturally arise from tree height.
