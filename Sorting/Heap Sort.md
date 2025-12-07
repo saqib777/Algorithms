@@ -75,3 +75,6 @@ if __name__ == "__main__":
 Compared to merge sort, heap sort saves memory because it does not use extra arrays. Compared to quick sort, heap sort avoids the worst-case O(n²) behavior. However, in practice, heap sort is often slower than quick sort due to weaker cache performance and more complex operations.
 
 From a learning perspective, heap sort is extremely important because it teaches how tree-based data structures work inside arrays, how to enforce structural properties like the heap condition, and how logarithmic operations naturally arise from tree height.
+
+<img width="1999" height="1250" alt="image" src="https://github.com/user-attachments/assets/14e1a41d-eabc-43e5-9cb7-89518d5f1985" />
+
