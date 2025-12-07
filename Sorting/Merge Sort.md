@@ -72,3 +72,49 @@ The space complexity of merge sort is typically O(n) because it uses additional 
 Merge sort is also a stable sorting algorithm. Stability means that if two elements have the same value, their relative order in the input is preserved in the output. This can be important in situations where elements carry extra information besides the key being sorted.
 
 Finally, merge sort is often used as a building block in real-world libraries and hybrid algorithms. Its predictable O(n log n) behavior and stability make it a strong choice when memory is not a severe limitation and consistent performance matters.
+
+```
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+
+    sorted_left = merge_sort(left_half)
+    sorted_right = merge_sort(right_half)
+
+    return merge(sorted_left, sorted_right)
+
+
+def merge(left, right):
+    i = 0
+    j = 0
+    result = []
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+
+    while j < len(right):
+        result.append(right[j])
+        j += 1
+
+    return result
+
+
+if __name__ == "__main__":
+    sample = [38, 27, 43, 3, 9, 82, 10]
+    print("Original:", sample)
+    print("Sorted:", merge_sort(sample))
+
+```
