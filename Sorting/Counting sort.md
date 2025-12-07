@@ -134,3 +134,40 @@ When data is not numeric
 Learning Value
 
 Counting sort teaches how sorting can be achieved without comparisons. It introduces the idea of frequency tables, direct placement, cumulative indexing, and stability. These concepts form the backbone of advanced algorithms like radix sort and bucket sort.
+
+```
+def counting_sort(arr):
+    if not arr:
+        return arr
+
+    max_val = max(arr)
+    min_val = min(arr)
+
+    range_of_elements = max_val - min_val + 1
+
+    count = [0] * range_of_elements
+    output = [0] * len(arr)
+
+    for num in arr:
+        count[num - min_val] += 1
+
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+
+    for i in range(len(arr) - 1, -1, -1):
+        current = arr[i]
+        count[current - min_val] -= 1
+        position = count[current - min_val]
+        output[position] = current
+
+    for i in range(len(arr)):
+        arr[i] = output[i]
+
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [4, 2, 2, 8, 3, 3, 1]
+    print("Original:", sample)
+    print("Sorted:", counting_sort(sample))
+```
