@@ -1,4 +1,4 @@
-Selection sort follows a clear and predictable structure, and breaking it down helps you understand why it behaves the way it does.
+**Selection sort** follows a clear and predictable structure, and breaking it down helps you understand why it behaves the way it does.
 
 At a high level, the algorithm treats the array as two sections: the sorted part on the left and the unsorted part on the right. Initially, the sorted section is empty. With every pass, one element is placed in its correct position, gradually expanding the sorted portion.
 
