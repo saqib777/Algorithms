@@ -106,3 +106,37 @@ When distribution is unknown
 Learning Value
 
 Bucket sort strengthens understanding of distribution-based sorting, data grouping, and hybrid sorting techniques. It also shows how sorting can be optimized when data follows predictable patterns.
+
+```
+def bucket_sort(arr):
+    if not arr:
+        return arr
+
+    n = len(arr)
+    buckets = [[] for _ in range(n)]
+
+    for value in arr:
+        index = int(n * value)
+        if index == n:
+            index -= 1
+        buckets[index].append(value)
+
+    for i in range(n):
+        buckets[i].sort()
+
+    result = []
+    for bucket in buckets:
+        result.extend(bucket)
+
+    for i in range(len(arr)):
+        arr[i] = result[i]
+
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51]
+    print("Original:", sample)
+    print("Sorted:", bucket_sort(sample))
+
+```
