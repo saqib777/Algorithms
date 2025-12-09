@@ -110,3 +110,41 @@ When performance is critical
 Learning Value
 
 Cocktail shaker sort helps you understand how bidirectional passes can optimize basic algorithms. It highlights the importance of narrowing problem boundaries and making algorithms adaptive to the nature of data.
+
+```
+def cocktail_shaker_sort(arr):
+    n = len(arr)
+    start = 0
+    end = n - 1
+    swapped = True
+
+    while swapped:
+        swapped = False
+
+        for i in range(start, end):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+
+        if not swapped:
+            break
+
+        end -= 1
+        swapped = False
+
+        for i in range(end, start, -1):
+            if arr[i] < arr[i - 1]:
+                arr[i], arr[i - 1] = arr[i - 1], arr[i]
+                swapped = True
+
+        start += 1
+
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [5, 1, 4, 2, 8]
+    print("Original:", sample)
+    print("Sorted:", cocktail_shaker_sort(sample))
+
+```
