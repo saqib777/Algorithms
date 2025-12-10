@@ -106,3 +106,33 @@ When memory usage must be minimal
 Learning Value
 
 Pigeonhole sort helps you understand direct addressing, range-based sorting, and how eliminating comparisons can drastically improve speed when constraints are favorable. It also deepens understanding of how counting sort and bucket-style algorithms relate.
+
+```
+def pigeonhole_sort(arr):
+    if not arr:
+        return arr
+
+    min_val = min(arr)
+    max_val = max(arr)
+    size = max_val - min_val + 1
+
+    holes = [[] for _ in range(size)]
+
+    for value in arr:
+        holes[value - min_val].append(value)
+
+    index = 0
+    for hole in holes:
+        for value in hole:
+            arr[index] = value
+            index += 1
+
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [8, 3, 2, 7, 4, 6, 8]
+    print("Original:", sample)
+    print("Sorted:", pigeonhole_sort(sample))
+
+```
