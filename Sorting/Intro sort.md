@@ -107,3 +107,86 @@ When implementing very simple educational sorting examples
 Learning Value
 
 Intro sort teaches how real-world production algorithms are engineered for both speed and safety. It shows how multiple algorithms can be layered intelligently to eliminate weaknesses and preserve strengths. Understanding intro sort means you now understand how modern language-level sorting functions are designed internally.
+
+```
+import math
+
+
+def insertion_sort_range(arr, left, right):
+    for i in range(left + 1, right + 1):
+        key = arr[i]
+        j = i - 1
+        while j >= left and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+
+def heapify_range(arr, n, i, offset):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[offset + left] > arr[offset + largest]:
+        largest = left
+
+    if right < n and arr[offset + right] > arr[offset + largest]:
+        largest = right
+
+    if largest != i:
+        arr[offset + i], arr[offset + largest] = arr[offset + largest], arr[offset + i]
+        heapify_range(arr, n, largest, offset)
+
+
+def heap_sort_range(arr, left, right):
+    n = right - left + 1
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify_range(arr, n, i, left)
+
+    for i in range(n - 1, 0, -1):
+        arr[left], arr[left + i] = arr[left + i], arr[left]
+        heapify_range(arr, i, 0, left)
+
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+def intro_sort_util(arr, low, high, depth_limit):
+    size = high - low + 1
+
+    if size < 16:
+        insertion_sort_range(arr, low, high)
+        return
+
+    if depth_limit == 0:
+        heap_sort_range(arr, low, high)
+        return
+
+    pivot_index = partition(arr, low, high)
+    intro_sort_util(arr, low, pivot_index - 1, depth_limit - 1)
+    intro_sort_util(arr, pivot_index + 1, high, depth_limit - 1)
+
+
+def intro_sort(arr):
+    n = len(arr)
+    depth_limit = 2 * int(math.log2(n)) if n > 0 else 0
+    intro_sort_util(arr, 0, n - 1, depth_limit)
+    return arr
+
+
+if __name__ == "__main__":
+    sample = [24, 97, 40, 67, 88, 85, 15, 66, 53, 44, 26, 48, 16, 52]
+    print("Original:", sample)
+    print("Sorted:", intro_sort(sample))
+```
+
+
