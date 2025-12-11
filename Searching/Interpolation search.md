@@ -112,3 +112,38 @@ Worst-case behavior must be predictable
 Learning Value
 
 Interpolation search teaches how mathematical estimation can improve search efficiency. It introduces the concept of adaptive searching, where the search strategy adjusts based on the data distribution. Understanding interpolation search is key to grasping how real-world systems optimize lookups using value-based heuristics.
+
+```
+def interpolation_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high and arr[low] <= target <= arr[high]:
+        if arr[low] == arr[high]:
+            if arr[low] == target:
+                return low
+            else:
+                break
+
+        mid = low + int(((target - arr[low]) * (high - low)) / (arr[high] - arr[low]))
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1
+
+
+if __name__ == "__main__":
+    sample = [10, 20, 30, 40, 50, 60, 70]
+    target = 50
+
+    result = interpolation_search(sample, target)
+    if result != -1:
+        print("Element found at index:", result)
+    else:
+        print("Element not found")
+```
