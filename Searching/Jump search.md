@@ -107,3 +107,36 @@ When strict logarithmic performance is needed (binary search is better)
 Learning Value
 
 Jump search introduces the idea of block-based searching and shows how clever step sizes (like √n) can dramatically reduce comparisons. It builds intuition for hybrid algorithms that balance skipping and scanning behaviors.
+
+```
+import math
+
+def jump_search(arr, target):
+    n = len(arr)
+    step = int(math.sqrt(n))
+
+    prev = 0
+    curr = step
+
+    while curr < n and arr[curr] < target:
+        prev = curr
+        curr += step
+
+    for i in range(prev, min(curr, n)):
+        if arr[i] == target:
+            return i
+
+    return -1
+
+
+if __name__ == "__main__":
+    sample = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+    target = 23
+
+    result = jump_search(sample, target)
+    if result != -1:
+        print("Element found at index:", result)
+    else:
+        print("Element not found")
+
+```
