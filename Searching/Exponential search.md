@@ -116,3 +116,49 @@ Exponential search reinforces two concepts:
 * combining multiple algorithms (range search + binary search)
 
 It is a great stepping-stone to understanding doubling strategies, unbounded searches, and hybrid algorithms.
+
+```
+import math
+
+
+def binary_search_range(arr, left, right, target):
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+
+def exponential_search(arr, target):
+    n = len(arr)
+    if n == 0:
+        return -1
+
+    if arr[0] == target:
+        return 0
+
+    bound = 1
+    while bound < n and arr[bound] <= target:
+        bound *= 2
+
+    left = bound // 2
+    right = min(bound, n - 1)
+
+    return binary_search_range(arr, left, right, target)
+
+
+if __name__ == "__main__":
+    sample = [3, 5, 7, 9, 12, 17, 19, 24, 31, 42]
+    target = 19
+
+    result = exponential_search(sample, target)
+    if result != -1:
+        print("Element found at index:", result)
+    else:
+        print("Element not found")
+
+```
