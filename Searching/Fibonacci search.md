@@ -139,3 +139,56 @@ Binary search is simpler and often faster
 Learning Value
 
 Fibonacci search deepens your understanding of search interval shrinking and shows how mathematical sequences like Fibonacci numbers can guide algorithm design. It highlights different ways of partitioning search space and builds strong intuition for advanced search algorithms.
+
+```
+
+def fibonacci_search(arr, target):
+    n = len(arr)
+
+    fibM2 = 0  # (m-2)th Fibonacci number
+    fibM1 = 1  # (m-1)th Fibonacci number
+    fibM = fibM1 + fibM2  # mth Fibonacci number
+
+    while fibM < n:
+        fibM2 = fibM1
+        fibM1 = fibM
+        fibM = fibM1 + fibM2
+
+    offset = -1
+
+    while fibM > 1:
+        i = min(offset + fibM2, n - 1)
+
+        if arr[i] < target:
+            fibM = fibM1
+            fibM1 = fibM2
+            fibM2 = fibM - fibM1
+            offset = i
+
+        elif arr[i] > target:
+            fibM = fibM2
+            fibM1 = fibM1 - fibM2
+            fibM2 = fibM - fibM1
+
+        else:
+            return i
+
+    if fibM1 and offset + 1 < n and arr[offset + 1] == target:
+        return offset + 1
+
+    return -1
+
+
+if __name__ == "__main__":
+    sample = [5, 8, 12, 15, 22, 30, 41, 55, 60]
+    target = 30
+
+    result = fibonacci_search(sample, target)
+
+    if result != -1:
+        print("Element found at index:", result)
+    else:
+        print("Element not found")
+
+
+```
