@@ -136,3 +136,50 @@ When precise boundaries are needed
 Learning Value
 
 This pattern strengthens your understanding of binary search control flow. It teaches how small changes in loop conditions can extract richer information from sorted data. This concept directly extends to problems like counting occurrences, range queries, and boundary searches.
+
+```
+
+def first_occurrence(arr, target):
+    low = 0
+    high = len(arr) - 1
+    result = -1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            result = mid
+            high = mid - 1
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return result
+
+
+def last_occurrence(arr, target):
+    low = 0
+    high = len(arr) - 1
+    result = -1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            result = mid
+            low = mid + 1
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return result
+
+
+if __name__ == "__main__":
+    sample = [1, 2, 2, 2, 3, 4, 5]
+    target = 2
+
+    print("First occurrence:", first_occurrence(sample, target))
+    print("Last occurrence:", last_occurrence(sample, target))
+
+```
