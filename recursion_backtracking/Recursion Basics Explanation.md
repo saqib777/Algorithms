@@ -92,3 +92,21 @@ When Not to Use Recursion
 Learning Value
 
 Understanding recursion is critical for mastering backtracking, trees, graphs, and dynamic programming. If recursion feels confusing at first, that is normal. It becomes clear once you learn to trust the base case and visualize the call stack.
+
+```
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+if __name__ == "__main__":
+    print("Factorial of 5:", factorial(5))
+    print("Fibonacci of 6:", fibonacci(6))
+```
