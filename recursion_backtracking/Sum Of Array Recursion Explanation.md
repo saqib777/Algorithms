@@ -2,7 +2,7 @@ Finding the sum of elements in an array using recursion is a simple but very imp
 
 ---
 
-Problem Understanding
+Problem Understanding:
 
 Given an array of integers, compute the sum of all its elements using recursion instead of loops.
 
@@ -12,7 +12,7 @@ Sum = 15
 
 ---
 
-Core Idea
+Core Idea:
 
 The sum of an array can be defined recursively as:
 
