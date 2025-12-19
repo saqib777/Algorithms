@@ -8,8 +8,8 @@ Core Idea
 
 Every recursive solution is built on two essential parts:
 
-1. Base Case – the condition where recursion stops
-2. Recursive Case – the part where the function calls itself
+1. Base Case - the condition where recursion stops
+2. Recursive Case - the part where the function calls itself
 
 Without a base case, recursion will run forever and cause a stack overflow.
 
