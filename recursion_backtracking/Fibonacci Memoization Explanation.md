@@ -12,7 +12,7 @@ Memoization fixes this by remembering results once they are computed.
 
 Core Idea:
 
-Use a data structure (usually a dictionary or array) to store previously computed results.
+Use a data structure (usually a dictionary or array) to store previously computed resultts: 
 
 When the function is called:
 
