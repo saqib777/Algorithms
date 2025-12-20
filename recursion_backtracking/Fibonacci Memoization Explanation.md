@@ -10,7 +10,7 @@ Memoization fixes this by remembering results once they are computed.
 
 ---
 
-Core Idea
+Core Idea:
 
 Use a data structure (usually a dictionary or array) to store previously computed results.
 
@@ -21,7 +21,7 @@ When the function is called:
 
 ---
 
-How Memoization Changes the Call Tree
+How Memoization Changes the Call Tree:
 
 Without memoization:
 
@@ -47,7 +47,7 @@ With memoization:
 
 ---
 
-Text-Based Flowchart
+Text-Based Flowchart:
 
 Start
 → fib(n)
@@ -76,7 +76,7 @@ Space Complexity: O(n) for memo storage and recursion stack
 
 ---
 
-Properties
+Properties:
 
 Uses recursion with optimization
 Avoids redundant computation
