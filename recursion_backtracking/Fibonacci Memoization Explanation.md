@@ -59,7 +59,7 @@ Start
 
 ---
 
-Algorithm Structure (Step Form)
+Algorithm Structure (Step Form):
 
 1. Initialize memo storage
 2. Define recursive function
@@ -69,7 +69,7 @@ Algorithm Structure (Step Form)
 
 ---
 
-Time and Space Complexity
+Time and Space Complexity:
 
 Time Complexity: O(n)
 Space Complexity: O(n) for memo storage and recursion stack
@@ -92,7 +92,7 @@ When readability of recursion is desired with performance
 
 ---
 
-Learning Value
+Learning Value:
 
 Memoization is the bridge between recursion and dynamic programming. Mastering this concept prepares you for advanced DP problems and performance optimization techniques.
 
