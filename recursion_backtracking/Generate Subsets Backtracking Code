@@ -1,0 +1,26 @@
+```
+def generate_subsets(nums):
+    result = []
+
+    def backtrack(index, current):
+        if index == len(nums):
+            result.append(current.copy())
+            return
+
+        # Include current element
+        current.append(nums[index])
+        backtrack(index + 1, current)
+
+        # Exclude current element (backtrack)
+        current.pop()
+        backtrack(index + 1, current)
+
+    backtrack(0, [])
+    return result
+
+
+if __name__ == "__main__":
+    sample = [1, 2, 3]
+    print("Subsets:", generate_subsets(sample))
+
+```
