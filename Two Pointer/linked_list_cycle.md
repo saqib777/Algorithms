@@ -1,5 +1,5 @@
 
-# Linked List Cycle — Detecting Loops Using Fast and Slow Pointers
+# Linked List Cycle - Detecting Loops Using Fast and Slow Pointers
 
 One of the most common problems in linked lists is detecting whether a cycle exists.
 
