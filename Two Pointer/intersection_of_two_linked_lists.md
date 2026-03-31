@@ -1,5 +1,5 @@
 
-# Intersection of Two Linked Lists — A Clever Pointer Switching Trick
+# Intersection of Two Linked Lists - A Clever Pointer Switching Trick
 
 Sometimes two linked lists merge into a common tail.
 
