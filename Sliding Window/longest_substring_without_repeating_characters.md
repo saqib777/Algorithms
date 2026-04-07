@@ -1,5 +1,5 @@
 
-# Maximum Sum Subarray of Size K — Introduction to Sliding Window
+# Maximum Sum Subarray of Size K - Introduction to Sliding Window
 
 When working with arrays, a common problem is to find the best subarray (continuous segment) that satisfies some condition.
 
