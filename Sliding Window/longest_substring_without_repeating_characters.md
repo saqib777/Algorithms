@@ -1,5 +1,5 @@
 
-# Longest Substring Without Repeating Characters — Variable Sliding Window
+# Longest Substring Without Repeating Characters  Variable Sliding Window
 
 After learning fixed-size sliding windows, the next step is to handle windows that **grow and shrink dynamically**.
 
